@@ -15,11 +15,29 @@ public class AppointmentService {
         this.appointmentRepository = appointmentRepository;
     }
 
+    /**
+     * Retrieves all appointments for a specific doctor.
+     * @param doctorId ID of the doctor
+     * @return list of appointments
+     */
     public List<Appointment> getAppointmentsByDoctorId(Long doctorId) {
-        return appointmentRepository.findByDoctorId(doctorId);
+        try {
+            return appointmentRepository.findByDoctorId(doctorId);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to retrieve appointments for doctor ID: " + doctorId, e);
+        }
     }
 
+    /**
+     * Books a new appointment.
+     * @param appointment Appointment object to save
+     * @return saved Appointment
+     */
     public Appointment bookAppointment(Appointment appointment) {
-        return appointmentRepository.save(appointment);
+        try {
+            return appointmentRepository.save(appointment);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to book appointment", e);
+        }
     }
 }
