@@ -1,4 +1,4 @@
-package model;
+package com.yourpackage.smartclinic.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,10 +10,6 @@ public class Prescription {
     private String id;
 
     private String patientName;
-
     private String medication;
-
     private Long appointmentId;
-
 }
-
